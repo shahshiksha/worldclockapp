@@ -1,0 +1,28 @@
+<div class="row" style="margin-top: 18px; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <div class="col-md-3">
+    <label>Member Name</label>
+    <input type="text" class="form-control" [(ngModel)]="teammemberName" placeholder="MemberName">
+  </div>
+  <div class="col-md-3">
+
+    <label>Choose your City</label>
+    <br>
+    <input type="text" placeholder="Search.." name="search" [(ngModel)]="cityName" (change)="getCurrentTime($event)">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </div>
+  <div class="col-md-3">
+    <label>Current Time</label>
+    <input type="text" class="form-control" [(ngModel)]="formattedTime" placeholder="CurrentTime">
+  </div>
+
+  <div class="col-md-3">
+    <label>Member's Image</label>
+    <img src={{imageUrl}} class="col-md-12" />
+    <input type="file" class="form-control" (change)="onUploadImage($event)">
+  </div>
+
+  <div class="col-md-3">
+    <button type="button" (click)="CreateRecord()" [disabled]="!teammemberName  || !formattedTime"
+      class="btn btn-primary"> Add Member</button>
+  </div>
+</div>

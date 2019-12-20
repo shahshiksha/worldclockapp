@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-md-8 col-xl-4 mx-auto">
+        <form [formGroup]="signUpForm" >
+
+            <div class="card mt-1">
+                <div class="card-header">
+                    <h4>SignUp</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group form-row">
+                        <label for="firstName" class="col-md-4 col-form-label">First Name:</label>
+                        <div class="col-md-8">
+                            <input type="text" name="firstName" id="firstName" placeholder="First Name"
+                                class="form-control" formControlName="firstName"
+                                [ngClass]="{
+                                    'is-invalid': signUpForm.get('firstName').invalid && (signUpForm.get('firstName').dirty || signUpForm.get('firstName').touched || signUpForm['submitted']),
+                                     'is-valid': signUpForm.get('firstName').valid && (signUpForm.get('firstName').dirty || signUpForm.get('firstName').touched || signUpForm['submitted']) }">
+                            <span class="text-danger"
+                                *ngIf="signUpForm.get('firstName').invalid && (signUpForm.get('firstName').dirty || signUpForm.get('firstName').touched || signUpForm['submitted'])&& signUpForm.get('firstName').errors?.required">First
+                                name cannot be blank</span>
+                            <span class="text-danger"
+                                *ngIf="signUpForm.get('firstName').invalid && (signUpForm.get('firstName').dirty || signUpForm.get('firstName').touched || signUpForm['submitted'])&& signUpForm.get('firstName').errors?.minlength">First
+                                name should contain atleast 2 characters</span>
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="lastName" class="col-md-4 col-form-label">Last Name:</label>
+                        <div class="col-md-8">
+                            <input type="text" name="lastName" id="firstName" placeholder="Last Name"
+                                class="form-control" formControlName="lastName"
+                                [ngClass]="{
+                                    'is-invalid': signUpForm.get('lastName').invalid && (signUpForm.get('lastName').dirty || signUpForm.get('lastName').touched || signUpForm['submitted']),
+                                     'is-valid': signUpForm.get('lastName').valid && (signUpForm.get('lastName').dirty || signUpForm.get('lastName').touched || signUpForm['submitted']) }">
+                            <span class="text-danger"
+                                *ngIf="signUpForm.get('lastName').invalid && (signUpForm.get('lastName').dirty || signUpForm.get('lastName').touched || signUpForm['submitted'])&& signUpForm.get('lastName').errors?.required">Last
+                                name cannot be blank</span>
+                            <span class="text-danger"
+                                *ngIf="signUpForm.get('lastName').invalid && (signUpForm.get('lastName').dirty || signUpForm.get('lastName').touched || signUpForm['submitted'])&& signUpForm.get('lastName').errors?.minlength">Last
+                                name should contain atleast 2 characters</span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="email" class="col-md-4 col-form-label">Email:</label>
+                        <div class="col-md-8">
+                            <input type="text" name="email" id="email" placeholder="Email" class="form-control"
+                                formControlName="email"
+                                [ngClass]="{
+                                    'is-invalid': signUpForm.get('email').invalid && (signUpForm.get('email').dirty || signUpForm.get('email').touched || signUpForm['submitted']),
+                                     'is-valid': signUpForm.get('email').valid && (signUpForm.get('email').dirty || signUpForm.get('email').touched || signUpForm['submitted']) }">
+                            <span class="text-danger"
+                                *ngIf="signUpForm.get('email').invalid && (signUpForm.get('email').dirty || signUpForm.get('email').touched || signUpForm['submitted'])&& signUpForm.get('email').errors?.email">Email
+                                is Invalid</span>
+
+
+
+                        </div>
+                    </div>
+                    <div class="form-group form-row">
+                        <label for="password" class="col-md-4 col-form-label">Password:</label>
+                        <div class="col-md-8">
+                            <input type="text" name="password" id="password" placeholder="Password" class="form-control"
+                                formControlName="password"
+                                [ngClass]="{
+                                    'is-invalid': signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm['submitted']),
+                                     'is-valid': signUpForm.get('password').valid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm['submitted']) }">
+                            <span class="text-danger"
+                                *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm['submitted'])&& signUpForm.get('password').errors?.required">password
+                                cannot be blank</span>
+                            <span class="text-danger"
+                                *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched || signUpForm['submitted'])&& signUpForm.get('password').errors?.minlength">Password
+                                should contain atleast 8 characters</span>
+                            <label class="error">{{errorMessage}}</label>
+                            <label class="success">{{successMessage}}</label>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group form-row" [class.has-error]="AcceptTermsAndCondition.touched && AcceptTermsAndCondition.invlalid"> -->
+                        <label class = "col-md-4 col-form-label"></label>
+                        <div class="col-md-8">
+                            <label class="checkbox-inline control-label">
+                                <input type="checkbox" name= "AcceptTermsAndCondition" id="AcceptTermsAndCondition" value="true" class="form-control" 
+                                formControlName="AcceptTermsAndCondition"
+                                [ngClass]="{
+                                    'is-invalid': signUpForm.get('AcceptTermsAndCondition').invalid && (signUpForm.get('AcceptTermsAndCondition').dirty || signUpForm.get('AcceptTermsAndCondition').touched || signUpForm['submitted']),
+                                    'is-valid': signUpForm.get('AcceptTermsAndCondition').valid && (signUpForm.get('AcceptTermsAndCondition').dirty || signUpForm.get('AcceptTermsAndCondition').touched || signUpForm['submitted']) }">
+                                    
+                                <span class="text-danger"
+                                  *ngIf="signUpForm.get('AcceptTermsAndCondition').invalid && (signUpForm.get('AcceptTermsAndCondition').dirty || signUpForm['submitted'])&& signUpForm.get('AcceptTermsAndCondition').errors?.required">Please 
+                                    select the checkbox
+                                </span>
+                                <label class="form-check-label">Accept Terms And Condition</label>
+                            </label>
+                        </div>
+                        <!-- <span class="help-block" *ngIf="AcceptTermsAndCondition.touched && AcceptTermsAndCondition.errors?.required">
+                            Please accept the terms and conditions.
+                        </span>    -->
+                     </div>
+                    <!-- {{signUpForm.value | json}} -->
+
+                </div>
+                <div class="card-footer">
+                    <!-- <button class="btn btn-success float-right">Create Account</button> -->
+                    <button type="submit" (click)="trySignUp(signUpForm.value)" class="btn btn-success float-right">Create Account</button>
+                        <!-- class="btn btn-success float-right">Create Account</button> -->
+                        
+                        <br>
+                        <br>
+               
+                </div>
+            
+        </form>
+
+    </div>
+  <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </div>
+    </div>  
+<!-- </div> -->

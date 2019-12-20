@@ -1,0 +1,20 @@
+{
+    "teammember":[{
+        "MembersName": "Bob Smith",
+        "Timezone": "CST",
+        "CurrentTime": "7:00 pm"
+    },
+    {
+        "MembersName": "Ryan Smith",
+        "Timezone": "PST",
+        "CurrentTime": "8:00 pm"
+
+    },
+    {
+        "MembersName": "John Smith",
+        "Timezone": "EST",
+        "CurrentTime": "9:00 pm"
+    }
+
+    ]
+}

@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div><a href="" target="_blank" class="navbar-brand">World Clock App</a></div>
+
+    <ul class="navbar-nav">
+      <li *ngIf="menuAuthService.currentUser">
+        <a routerLink="/dashboard" class="nav-link">Dashboard</a>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+      <li *ngIf="!menuAuthService.currentUser"><a href="/login" routerLink="/login" class="nav-link">Login</a>
+      </li>
+      <li *ngIf="!menuAuthService.currentUser"><a routerLink="/sign-up" class="nav-link">SignUp</a>
+      </li>
+      <li *ngIf="menuAuthService.currentUser"><a routerLink="/logout" class="nav-link">Logout</a>
+      </li>
+      <li *ngIf="menuAuthService.currentUser">
+        <a routerLink="/addmemeber" class="nav-link">Add member</a>
+      </li>
+
+    </ul>
+
+  </nav>
+</header>

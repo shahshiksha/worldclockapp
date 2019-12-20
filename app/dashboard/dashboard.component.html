@@ -1,0 +1,91 @@
+<!-- <div class="container">
+  <h1 style="margin-top: 18px;">
+    Dashboard
+  </h1>
+  <div class="col-md-12">
+    <p class="pull-right">{{today | date:'fullDate'}} {{today | date:'h:mm:ss a'}}</p>
+  </div>
+
+  <div class="row" style="margin-top: 25px;">
+    <div class="col-md-9" *ngIf="today">
+      <div class="card" style="width: 18rem;" *ngFor="let item of teammmembersList">
+
+        <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+          <div class="text-center">
+            <img src={{item.imageUrl}} class="col-md-10" />
+          </div>
+
+          <p class="card-text">Member Name: {{item.MemberName}} </p>
+          <div class="card-text" *ngIf="today">Date & Time: {{item.currentTimeInMilliSec | date:'fullDate'}}
+            {{item.currentTimeInMilliSec | date:'h:mm:ss a'}}
+
+            ({{item.timeZone}})
+            <br/>
+           </div>
+          <app-analog-clock [currentDateTime]="item.currentTimeInMilliSec"> </app-analog-clock>
+          <br />
+
+          <a class="btn btn-primary" (click)="EditRecord(item)">Edit</a>
+          &nbsp; &nbsp;
+          <a class="btn btn-danger float-right" (click)="RemoveRecord(item.id)">Delete</a>
+
+        </div>
+        <ng-template #elseBlock>
+          <div class="card-body">
+            <h5 class="card-title">Edit</h5>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditMemberName"
+                    placeholder="Edit MemberName">
+                </div>
+                <div class="col-md-12">
+                  <img src={{item.EditimageUrl}} class="col-md-12" />
+                  <input type="file" class="form-control" (change)="onUploadImage($event, item)">
+                </div>
+                <div class="col-md-12">
+                  <input type="text" class="form-control" [(ngModel)]="item.EditimageUrl" placeholder="EditimageUrl">
+                </div>
+                <div class="col-md-12">
+
+                  <span class="h6">{{item.EditformattedTime}}</span>
+                </div>
+
+              </div>
+            </div>
+            <a class="btn btn-info" (click)="UpdateRecord(item)">Update</a>
+            &nbsp; &nbsp;
+            <a class="btn btn-secondary" (click)="item.isEdit = false">Cancel</a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div> -->
+  <h1 style="text-align: center; margin-top: 28px;">
+      Dashboard
+    </h1>
+    <br/>
+    <table class="table table-striped table-responsive-md btn-table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Member Name</th>
+          <th>Date & Time</th>
+          <th>Timezone</th>
+          <th>Edit</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of teammmembersList">
+        <tr *ngIf="item.createdBy === dashboardAuthService.currentUser" >
+          <td><img src={{item.imageUrl}} class="col-md-3" /></td>
+          <td>{{item.MemberName}}</td>
+          <td>{{item.currentTimeInMilliSec | date:'fullDate'}} {{item.currentTimeInMilliSec | date:'h:mm:ss a'}}  <app-analog-clock [currentDateTime] = "item.currentTimeInMilliSec"> </app-analog-clock></td>
+          <td> ({{item.timeZone}})</td>
+          <td><a class="btn btn-primary" (click)="EditRecord(item)">Edit</a></td>
+          <td><a class="btn btn-danger float-right" (click)="RemoveRecord(item.id)">Delete</a></td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
